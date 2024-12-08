@@ -1,0 +1,122 @@
+{
+  "head": {
+    "vars": [
+      "label",
+      "nameLabel"
+    ]
+  },
+  "results": {
+    "bindings": [
+      {
+        "label": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q100744452"
+        },
+        "nameLabel": {
+          "type": "literal",
+          "value": "Atlantic Records Russia"
+        }
+      },
+      {
+        "label": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q202440"
+        },
+        "nameLabel": {
+          "type": "literal",
+          "value": "Atlantic Records"
+        }
+      },
+      {
+        "label": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q202440"
+        },
+        "nameLabel": {
+          "type": "literal",
+          "value": "Atlantic Record"
+        }
+      },
+      {
+        "label": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q4816467"
+        },
+        "nameLabel": {
+          "type": "literal",
+          "value": "Atlantic Jaxx"
+        }
+      },
+      {
+        "label": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q18205278"
+        },
+        "nameLabel": {
+          "type": "literal",
+          "value": "Atlantic Records UK"
+        }
+      },
+      {
+        "label": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q55904373"
+        },
+        "nameLabel": {
+          "type": "literal",
+          "value": "Atlantic America"
+        }
+      },
+      {
+        "label": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q56501583"
+        },
+        "nameLabel": {
+          "type": "literal",
+          "value": "DRO Atlantic"
+        }
+      },
+      {
+        "label": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q105497851"
+        },
+        "nameLabel": {
+          "type": "literal",
+          "value": "Atlantic Records"
+        }
+      },
+      {
+        "label": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q107300717"
+        },
+        "nameLabel": {
+          "type": "literal",
+          "value": "Atlantic Music Artist Agency"
+        }
+      },
+      {
+        "label": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q118782855"
+        },
+        "nameLabel": {
+          "type": "literal",
+          "value": "Atlantic Jazz"
+        }
+      },
+      {
+        "label": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q124814859"
+        },
+        "nameLabel": {
+          "type": "literal",
+          "value": "Atlantic Records France"
+        }
+      }
+    ]
+  }
+}
