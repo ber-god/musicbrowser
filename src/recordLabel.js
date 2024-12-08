@@ -55,3 +55,9 @@ fetchWikidata("atlantic").then((data) => {
 }).then(() => {
     console.log(results);
 });
+
+const searchRecordLabel = `select distinct ?s ?desc ?link where {
+?s owl:sameAs ?link; dbo:abstract ?desc
+FILTER(?link = <http://www.wikidata.org/entity/Q67030918>)
+FILTER(LANG(?desc) = "fr")
+} LIMIT 100`;
