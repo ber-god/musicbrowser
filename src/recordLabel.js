@@ -1,10 +1,9 @@
 import './style.css'
-
-const wikidataUrl = "https://query.wikidata.org/sparql";
+import { fetchWikidata, fetchDbpedia } from './utils/SparqlEndpoints.js'
 
 const searchRecordLabelQuery = (label, limit = 100) => {
     return `SELECT DISTINCT ?label ?nameLabel (MAX(?followers) as ?maxFoll) 
-        {
+        WHERE {
           ?label wdt:P31 wd:Q18127; rdfs:label ?name; wdt:P8687 ?followers
           FILTER(LANG(?name) = "fr")
           FILTER(CONTAINS(LCASE(?name), "${label}")).
@@ -15,49 +14,30 @@ const searchRecordLabelQuery = (label, limit = 100) => {
         LIMIT ${limit}`;
 }
 
-async function fetchWikidata(label) {
-    const url = wikidataUrl + "?query=" + searchRecordLabelQuery(label);
-    const headers = {
-        "Accept": "application/sparql-results+json", // Request JSON results
-    };
-
-    try {
-        const response = await fetch(url, { headers });
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        const data = await response.json();
-        console.log("Response:", data);
-        return data;
-    } catch (error) {
-        console.error("Error fetching data:", error);
-    }
+const getRecordLabelDescriptionQuery = (labelUri, limit = 100) => {
+    return `SELECT DISTINCT ?s ?desc ?link 
+        WHERE {
+            ?s owl:sameAs ?link; dbo:abstract ?desc .
+            FILTER(?link = <${labelUri}>)
+            FILTER(LANG(?desc) = "fr")
+        } 
+        LIMIT ${limit}`;
 }
 
-async function parseWikidata(response) {
-    const results = [];
-    const vars = response.head.vars;
-    response.results.bindings.forEach((result) => {
-        const obj = {};
-        vars.forEach((v) => {
-            obj[v] = result[v].value;
-        });
-        results.push(obj);
-    });
-    return results;
-}
+
+
 var results = [];
-fetchWikidata("atlantic").then((data) => {
-    console.log(data);
-    parseWikidata(data).then((parsedData) => {
-        results = parsedData;
-    });
+fetchWikidata(searchRecordLabelQuery("atlantic")).then((data) => {
+    results = data;
+    console.log("Wikidata", results);
 }).then(() => {
-    console.log(results);
+    fetchDbpedia(getRecordLabelDescriptionQuery(results[0]["label"])).then((data) => {
+        console.log("Dbpedia", data);
+    });
 });
 
-const searchRecordLabel = `select distinct ?s ?desc ?link where {
-?s owl:sameAs ?link; dbo:abstract ?desc
-FILTER(?link = <http://www.wikidata.org/entity/Q67030918>)
-FILTER(LANG(?desc) = "fr")
-} LIMIT 100`;
+
+
+
+console.log(getRecordLabelDescriptionQuery("atlantic"));
+
