@@ -1,4 +1,4 @@
-import './style.css'
+import '../styles/style.css'
 import { fetchWikidata, fetchDbpedia } from './utils/SparqlEndpoints.js'
 
 const searchRecordLabelQuery = (label, limit = 100) => {
